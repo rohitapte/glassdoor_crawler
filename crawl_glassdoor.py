@@ -24,7 +24,7 @@ def crawl_company(sCompanyName,numPages=100):
         pas = driver.find_element_by_id("userPassword")
         pas.send_keys("uVXph_KB38_hvvd")
         pas.submit()
-        for i in tqdm(range(2,numPages+1)):
+        for i in tqdm(range(2,numPages+2)):
             time.sleep(random.randint(3,20))
             soup=BeautifulSoup(driver.page_source, 'html.parser')
             reviews=soup.find_all('li', attrs= {'class':"noBorder empReview cf pb-0 mb-0"})
