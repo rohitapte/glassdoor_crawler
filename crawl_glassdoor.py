@@ -45,11 +45,21 @@ def crawl_company(sCompanyName,numPages=100):
                 adviceManagementHTML = review.find('span', attrs={'data-test': "advice-management"})
                 if adviceManagementHTML is not None:
                     cons = adviceManagementHTML.text
+                authorInfo=''
+                authorInfoHTML = review.find('span', attrs={'class':'authorJobTitle middle common__EiReviewDetailsStyle__newGrey'})
+                if authorInfoHTML is not None:
+                    authorInfo=authorInfoHTML.text
+                authorLocation = ''
+                authorLocationHTML=review.find('span', attrs={'class':'authorLocation'})
+                if authorLocationHTML is not None:
+                    authorLocation = authorLocationHTML.text
                 reviewDict={
                     'rating':rating,
                     'pros':pros,
                     'cons':cons,
-                    'adviceManagement': adviceManagement
+                    'adviceManagement': adviceManagement,
+                    'authorInfo': authorInfo,
+                    'authorLocation': authorLocation
                 }
                 f.write(json.dumps(reviewDict)+'\n')
             sUrl = "https://www.glassdoor.com.hk/Reviews/" + \
@@ -60,4 +70,4 @@ def crawl_company(sCompanyName,numPages=100):
             f.flush()
 
 if __name__ == "__main__":
-    crawl_company('Amazon')
+    crawl_company('Amazon',numPages=8000)
