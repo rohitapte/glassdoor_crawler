@@ -15,7 +15,7 @@ def crawl_company(sCompanyName,sCompanyCode,numPages=100):
         sUrl = "https://www.glassdoor.com.hk/Reviews/" + \
         sCompanyName + \
         "-Reviews-" + sCompanyCode + \
-        ".htm?sort.sortType=RD&sort.ascending=false&filter.iso3Language=eng"
+        ".htm?filter.iso3Language=eng"
         driver.get(sUrl)
         driver.find_element_by_css_selector(
             '[class="d-flex align-items-center justify-content-center p-0 m-0 HeaderStyles__signInButton"]').click()
@@ -67,9 +67,9 @@ def crawl_company(sCompanyName,sCompanyCode,numPages=100):
                    sCompanyName + \
                    "-Reviews-" + sCompanyCode + "" \
                     "_P" + str(i) + \
-                    ".htm?sort.sortType=RD&sort.ascending=false&filter.iso3Language=eng"
+                    ".htm?filter.iso3Language=eng"
             driver.get(sUrl)
             f.flush()
 
 if __name__ == "__main__":
-    crawl_company('Facebook','E40772',numPages=575)
+    crawl_company('Cisco-Systems','E1425',numPages=1400)
