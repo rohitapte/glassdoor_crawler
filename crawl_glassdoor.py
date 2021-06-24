@@ -10,11 +10,12 @@ from selenium.webdriver.support import expected_conditions as EC
 
 driver = webdriver.Chrome('./chromedriver')
 
-def crawl_company(sCompanyName,numPages=100):
+def crawl_company(sCompanyName,sCompanyCode,numPages=100):
     with open(sCompanyName+'.txt','w',encoding='utf-8') as f:
         sUrl = "https://www.glassdoor.com.hk/Reviews/" + \
         sCompanyName + \
-        "-Reviews-E6036.htm?sort.sortType=RD&sort.ascending=false&filter.iso3Language=eng"
+        "-Reviews-" + sCompanyCode + \
+        ".htm?sort.sortType=RD&sort.ascending=false&filter.iso3Language=eng"
         driver.get(sUrl)
         driver.find_element_by_css_selector(
             '[class="d-flex align-items-center justify-content-center p-0 m-0 HeaderStyles__signInButton"]').click()
@@ -64,10 +65,11 @@ def crawl_company(sCompanyName,numPages=100):
                 f.write(json.dumps(reviewDict)+'\n')
             sUrl = "https://www.glassdoor.com.hk/Reviews/" + \
                    sCompanyName + \
-                   "-Reviews-E6036_P" + str(i) + \
-                                      ".htm?sort.sortType=RD&sort.ascending=false&filter.iso3Language=eng"
+                   "-Reviews-" + sCompanyCode + "" \
+                    "_P" + str(i) + \
+                    ".htm?sort.sortType=RD&sort.ascending=false&filter.iso3Language=eng"
             driver.get(sUrl)
             f.flush()
 
 if __name__ == "__main__":
-    crawl_company('Amazon',numPages=8000)
+    crawl_company('Facebook','E40772',numPages=575)
