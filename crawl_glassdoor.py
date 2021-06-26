@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 driver = webdriver.Chrome('./chromedriver')
 
 def crawl_company(sCompanyName,sCompanyCode,numPages=100):
-    with open(sCompanyName+'.txt','w',encoding='utf-8') as f:
+    with open('data/'+sCompanyName+'.txt','w',encoding='utf-8') as f:
         sUrl = "https://www.glassdoor.com.hk/Reviews/" + \
         sCompanyName + \
         "-Reviews-" + sCompanyCode + \
