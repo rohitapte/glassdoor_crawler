@@ -4,7 +4,7 @@ import json
 def populate_elasticsearch():
     es = Elasticsearch([{'host':'localhost', 'port': 9200}])
     doc=[]
-    with open('Amazon.txt',encoding='utf-8') as f:
+    with open('data/Amazon.txt', encoding='utf-8') as f:
         for line in f:
             doc.append(json.loads(line))
     print(len(doc))
