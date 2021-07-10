@@ -4,7 +4,7 @@ import json
 import os
 from tqdm import tqdm
 
-es = Elasticsearch([{'host':'localhost', 'port': 9200}])
+es = Elasticsearch([{'host':'13.52.183.126', 'port': 9255}])
 es.indices.delete(index='glassdoor_reviews', ignore=[400, 404])
 es.indices.create(index='glassdoor_reviews', ignore=400)
 DATA_PATH='data'

@@ -13,7 +13,7 @@ class Word2VecCorpus(object):
 if __name__ == "__main__":
     sentences = Word2VecCorpus()
     vector_size=50
-    window=3
-    min_count=1
+    window=5
+    min_count=3
     model = Word2Vec(sentences=sentences, vector_size=vector_size, window=window, min_count=min_count, workers=8)
     model.save("word2vec.model_"+str(vector_size)+"_"+str(window)+"_"+str(min_count))
